@@ -2,6 +2,7 @@ package com.example.learnregex.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,30 +13,34 @@ import java.util.regex.Pattern;
 public class RegExOperations extends Master{
 
     @FXML
-    private TextField textField;
+    private TextField textField, patternField, replaceTextfield, findInput,replaceInput;
     @FXML
-    private TextField patternField;
+    private Button processBtn, replaceBtn,findBtn;
     @FXML
-    private Button processBtn;
-    @FXML
-    private TextArea resultArea;
-    @FXML
-    private TextField replaceTextfield;
-    @FXML
-    private Button replaceBtn;
+    private TextArea resultArea,userInput;
 
 
     @FXML
-    public void basicOperations(ActionEvent event) {
-        String result = Master.operator(textField.getText(),patternField.getText());
-        resultArea.setText(result);
+    public void findOperation(ActionEvent event) {
+        if (!userInput.getText().isEmpty() && !findInput.getText().isEmpty()){
+            String result = Master.finder(userInput.getText(),findInput.getText());
+            resultArea.setText(result);
+        }else{
+            ShowAlert.showAlert("Error", "Please fill all the fields","No input given!!! Please enter the fields and continue! ", Alert.AlertType.ERROR);
+        }
+
+
     }
 
     @FXML
-    public void replaceOperations(ActionEvent event) {
-        String input = textField.getText();
-        String replaceword =  replaceTextfield.getText();
-        String result = input.replaceAll("\\bboy\\b",replaceword);
-        System.out.println(result);
+    public void replaceOperation(ActionEvent event) {
+
+        if (!userInput.getText().isEmpty() && !findInput.getText().isEmpty() && !replaceInput.getText().isEmpty()){
+        Master.replaceWords(userInput.getText(),findInput.getText(),replaceInput.getText());
+        }else{
+            ShowAlert.showAlert("Error", "Please fill all the fields","No input given!!! Please enter the fields and continue! ", Alert.AlertType.ERROR);
+        }
     }
+
+
 }
