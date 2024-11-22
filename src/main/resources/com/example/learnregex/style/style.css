@@ -6,5 +6,6 @@
     -fx-border-radius: 10px;
 }
 .exportContainer{
-    -fx-border-radius:5px;
+    -fx-border-color:  #626ae7;
+    -fx-border-radius:10px;
 }
