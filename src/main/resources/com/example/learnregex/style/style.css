@@ -1,0 +1,11 @@
+.quickReference-box {
+    -fx-background-color: rgba(98, 106, 231, 0.1);
+    -fx-padding: 10px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+.exportContainer{
+    -fx-border-color:  #626ae7;
+    -fx-border-radius:10px;
+}
