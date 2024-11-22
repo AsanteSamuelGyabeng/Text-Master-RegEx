@@ -15,15 +15,10 @@ public class Master {
     public static String finder(String userInput, String wordToFind){
         try{
             Matcher mt = Pattern.compile(wordToFind).matcher(userInput);
-            if (mt.find()){
-                return mt.group() + " is found";
-            }else{
-                return "Word not found";
-            }
+            if (mt.find()) return mt.group() + " is found";
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return "No match found, try other word(s)";
     }
 

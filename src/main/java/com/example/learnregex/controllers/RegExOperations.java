@@ -26,7 +26,11 @@ public class RegExOperations extends Master{
             String result = Master.finder(userInput.getText(),findInput.getText());
             resultArea.setText(result);
         }else{
-            ShowAlert.showAlert("Error", "Please fill all the fields","No input given!!! Please enter the fields and continue! ", Alert.AlertType.ERROR);
+            ShowAlert.showAlert(
+                    "Error", "Please fill all the fields",
+                    "No input given!!! Please enter the fields and continue! ",
+                    Alert.AlertType.ERROR
+            );
         }
 
 
@@ -38,7 +42,11 @@ public class RegExOperations extends Master{
         if (!userInput.getText().isEmpty() && !findInput.getText().isEmpty() && !replaceInput.getText().isEmpty()){
         Master.replaceWords(userInput.getText(),findInput.getText(),replaceInput.getText());
         }else{
-            ShowAlert.showAlert("Error", "Please fill all the fields","No input given!!! Please enter the fields and continue! ", Alert.AlertType.ERROR);
+            ShowAlert.showAlert(
+                    "Error",
+                    "Please fill all the fields",
+                    "No input given!!! Please enter the fields and continue! ",
+                    Alert.AlertType.ERROR);
         }
     }
 
