@@ -241,13 +241,13 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="314.0">
                                              <children>
-                                                <TextField layoutX="10.0" layoutY="11.0" prefHeight="32.0" prefWidth="198.0" promptText="search regex">
+                                                <TextField fx:id="regexSearch" layoutX="10.0" layoutY="11.0" prefHeight="32.0" prefWidth="198.0" promptText="search regex">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </TextField>
                                                 <HBox prefHeight="28.0" prefWidth="4.0" />
-                                                <Button fx:id="patternBtn" mnemonicParsing="false" onAction="#findOperation" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #626ae7;" text="Pattern" textFill="WHITE">
+                                                <Button fx:id="patternBtn" mnemonicParsing="false" onAction="#regexOperation" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #626ae7;" text="Pattern" textFill="WHITE">
                                                    <font>
                                                       <Font size="13.0" />
                                                    </font>
@@ -297,14 +297,14 @@
                                                 </Label>
                                              </children>
                                           </VBox>
-                                          <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="328.0" prefWidth="223.0" style="-fx-padding: 10px;">
+                                          <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="345.0" prefWidth="224.0" style="-fx-padding: 10px;">
                                              <children>
-                                                <Label contentDisplay="CENTER" prefHeight="24.0" prefWidth="165.0" text="Quick Reference" textAlignment="CENTER">
+                                                <Label contentDisplay="CENTER" prefHeight="47.0" prefWidth="165.0" text="Quick Reference" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="Franklin Gothic Demi Italic" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <VBox prefHeight="271.0" prefWidth="215.0" style="-fx-border-color: #626ae7;" styleClass="quickReference-box" stylesheets="@style/style.css" />
+                                                <VBox prefHeight="328.0" prefWidth="189.0" style="-fx-border-color: #626ae7;" styleClass="quickReference-box" stylesheets="@style/style.css" />
                                              </children>
                                           </VBox>
                                        </children>

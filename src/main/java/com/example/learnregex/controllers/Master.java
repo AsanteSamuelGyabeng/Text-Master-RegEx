@@ -31,8 +31,8 @@ public class Master {
      */
     public static String replaceWords(String userInput, String replaceInput, String wordToBeReplaced) {
         try{
-            String result = userInput.replaceAll("\\b"+wordToBeReplaced+"\\b",replaceInput);
-            return result;
+            String finalresult = userInput.replaceAll("\\b"+replaceInput+"\\b",wordToBeReplaced);
+            return finalresult;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             ShowAlert.showAlert("Error", "Something went wrong, please try again",e.getMessage(), Alert.AlertType.ERROR);
