@@ -1,14 +1,275 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.learnregex.controllers.RegExOperations"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="157.0">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/gtr.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="35.0" prefWidth="12.0" />
+                  <Label prefHeight="33.0" prefWidth="126.0" text="TextMaster">
+                     <font>
+                        <Font name="Bauhaus 93" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="346.0" />
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #626ae7;" text="Help" textFill="WHITE">
+               <font>
+                  <Font size="9.0" />
+               </font></Button>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <AnchorPane prefHeight="365.0" prefWidth="36.0" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="365.0" prefWidth="371.0" style="-fx-padding: 10px;">
+               <children>
+                  <VBox prefHeight="182.0" prefWidth="272.0">
+                     <children>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="34.0" prefWidth="262.0">
+                           <children>
+                              <VBox prefHeight="34.0" prefWidth="182.0">
+                                 <children>
+                                    <Label text="Original Text">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox prefHeight="13.0" prefWidth="154.0" />
+                                    <Label text="Please paste your text below for analysis">
+                                       <font>
+                                          <Font size="7.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="34.0" prefWidth="88.0" />
+                              <Button layoutX="238.0" layoutY="26.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="75.0" style="-fx-background-color: #626ae7;" text="Import" textFill="WHITE">
+                                 <font>
+                                    <Font size="7.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="7.0" prefWidth="262.0" />
+                        <VBox prefHeight="139.0" prefWidth="262.0" style="-fx-padding: 10px;">
+                           <children>
+                              <VBox prefHeight="16.0" prefWidth="350.0" />
+                              <TextArea prefHeight="71.0" prefWidth="262.0" promptText="Input Text">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <font>
+                                    <Font name="Arial" size="9.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </TextArea>
+                              <VBox prefHeight="17.0" prefWidth="350.0" />
+                              <VBox prefHeight="5.0" prefWidth="262.0" />
+                              <HBox prefHeight="64.0" prefWidth="262.0">
+                                 <children>
+                                    <HBox prefHeight="63.0" prefWidth="64.0">
+                                       <children>
+                                          <VBox prefHeight="50.0" prefWidth="88.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="7.0" prefWidth="75.0" style="-fx-background-color: #626ae7;" text="Analyze" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="7.0" />
+                                                   </font>
+                                                </Button>
+                                                <VBox prefHeight="6.0" prefWidth="62.0" />
+                                                <Label text="The processed text will appear down." wrapText="true">
+                                                   <font>
+                                                      <Font size="6.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="178.0">
+                                       <children>
+                                          <VBox prefHeight="50.0" prefWidth="148.0" style="-fx-padding: 0px 2px 0px 2px;">
+                                             <children>
+                                                <Label text="Find and Replace">
+                                                   <font>
+                                                      <Font name="Eras Demi ITC" size="9.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField prefHeight="21.0" prefWidth="143.0">
+                                                   <font>
+                                                      <Font size="8.0" />
+                                                   </font>
+                                                </TextField>
+                                                <VBox prefHeight="4.0" prefWidth="125.0" />
+                                                <TextField prefHeight="16.0" prefWidth="143.0">
+                                                   <font>
+                                                      <Font size="8.0" />
+                                                   </font>
+                                                </TextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <VBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="75.0">
+                                       <children>
+                                          <ComboBox prefHeight="6.0" prefWidth="75.0" promptText="Select" visibleRowCount="5" />
+                                          <VBox prefHeight="8.0" prefWidth="79.0" />
+                                          <Button layoutX="10.0" layoutY="43.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="75.0" style="-fx-background-color: #626ae7;" text="Replace" textFill="WHITE">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 0;">
+                     <children>
+                        <HBox prefHeight="22.0" prefWidth="350.0">
+                           <children>
+                              <Label text="Processed Result">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="22.0" prefWidth="171.0" />
+                              <HBox alignment="BOTTOM_RIGHT" prefHeight="22.0" prefWidth="83.0">
+                                 <children>
+                                    <Label text="Word Count: 812">
+                                       <font>
+                                          <Font size="9.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="This area will display the processed text with modifications applied." style="-fx-border-color: #626ae7; -fx-border-radius: 5px;">
+                           <font>
+                              <Font size="7.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="365.0" prefWidth="241.0">
+               <children>
+                  <VBox prefHeight="365.0" prefWidth="219.0">
+                     <children>
+                        <VBox prefHeight="182.0" prefWidth="168.0">
+                           <children>
+                              <HBox prefHeight="58.0" prefWidth="218.0" />
+                              <VBox prefHeight="124.0" prefWidth="218.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="218.0">
+                                       <children>
+                                          <TextField layoutX="10.0" layoutY="11.0" prefHeight="26.0" prefWidth="136.0">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </TextField>
+                                          <HBox prefHeight="28.0" prefWidth="4.0" />
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #626ae7;" text="Import" textFill="WHITE">
+                                             <font>
+                                                <Font size="7.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="214.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #626ae7;" text="Import" textFill="WHITE">
+                                             <font>
+                                                <Font size="7.0" />
+                                             </font>
+                                          </Button>
+                                          <HBox prefHeight="38.0" prefWidth="3.0" />
+                                          <TextField prefHeight="26.0" prefWidth="129.0">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="201.0" prefWidth="218.0">
+                           <children>
+                              <HBox prefHeight="193.0" prefWidth="217.0">
+                                 <children>
+                                    <VBox alignment="BOTTOM_RIGHT" prefHeight="133.0" prefWidth="74.0" style="-fx-padding: 0px 0px 10px 0px;">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="22.0" prefWidth="61.0" style="-fx-background-color: #626ae7; -fx-border-radius: 10px;" styleClass="exportContainer" stylesheets="@style/style.css">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="27.0" style="-fx-background-color: white;" text="Pdf" textFill="#626ae7">
+                                                   <font>
+                                                      <Font name="System Bold" size="8.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button layoutX="27.0" layoutY="11.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="31.0" style="-fx-background-color: #626ae7;" text="Docs" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="8.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="193.0" prefWidth="152.0" style="-fx-padding: 10px;">
+                                       <children>
+                                          <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="89.0" text="Quick Reference" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Franklin Gothic Demi Italic" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox prefHeight="170.0" prefWidth="139.0" style="-fx-border-color: #626ae7;" styleClass="quickReference-box" stylesheets="@style/style.css" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
