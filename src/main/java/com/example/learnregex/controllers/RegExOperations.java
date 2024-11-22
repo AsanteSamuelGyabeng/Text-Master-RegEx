@@ -2,10 +2,7 @@ package com.example.learnregex.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,9 +12,11 @@ public class RegExOperations extends Master{
     @FXML
     private TextField textField, patternField, replaceTextfield, findInput,replaceInput;
     @FXML
-    private Button processBtn, replaceBtn,findBtn;
+    private Button processBtn, replaceButton,findBtn,importBtn,pdfBtn,docsBtn,helpBtn,patternBtn;
     @FXML
     private TextArea resultArea,userInput;
+    @FXML
+    private Label wordCountLabel;
 
 
     @FXML
@@ -38,9 +37,9 @@ public class RegExOperations extends Master{
 
     @FXML
     public void replaceOperation(ActionEvent event) {
-
         if (!userInput.getText().isEmpty() && !findInput.getText().isEmpty() && !replaceInput.getText().isEmpty()){
-        Master.replaceWords(userInput.getText(),findInput.getText(),replaceInput.getText());
+        String result = Master.replaceWords(userInput.getText(),findInput.getText(),replaceInput.getText());
+        resultArea.setText(result);
         }else{
             ShowAlert.showAlert(
                     "Error",
