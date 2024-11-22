@@ -1,29 +1,48 @@
 package com.example.learnregex.controllers;
+import javafx.scene.control.Alert;
+
 import java.util.regex.* ;
 
 public class Master {
 
 
-    public static String operator(String input, String pattern){
-
-        Matcher mt = Pattern.compile(pattern).matcher(input);
-
-        if(mt.find()){
-//            mt.group()
-            if(mt.groupCount() > 0){
-                return mt.group() + "Appears" + mt.groupCount() + "times" ;
+    /**
+     * @finder find a match pattern and words in inputs
+     * @param userInput
+     * @param wordToFind
+     * @return
+     */
+    public static String finder(String userInput, String wordToFind){
+        try{
+            Matcher mt = Pattern.compile(wordToFind).matcher(userInput);
+            if (mt.find()){
+                return mt.group() + " is found";
+            }else{
+                return "Word not found";
             }
-            return "true : the word" +" ("+mt.group()+")" + " \n is in the given sentence " + input + "\n starting at the index " + mt.start() + " and ends at " + mt.end() + "\n";
-
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
-        return "No match found";
+        return "No match found, try other word(s)";
     }
 
-    public static void replaceWords(String mainInput, String replaceInput) {
-        String text = mainInput;
-        String theOutput = mainInput.replaceAll("\\bboy\\b", replaceInput);
-        System.out.println(theOutput);
+    /**
+     * @param userInput
+     * @param replaceInput
+     * @param wordToBeReplaced
+     * @return
+     * @replaceWords method replaces all occurances in the input given
+     */
+    public static String replaceWords(String userInput, String replaceInput, String wordToBeReplaced) {
+        try{
+            String result = userInput.replaceAll("\\b"+wordToBeReplaced+"\\b",replaceInput);
+            return result;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ShowAlert.showAlert("Error", "Something went wrong, please try again",e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return "No match found, try other word(s)";
     }
 
 
