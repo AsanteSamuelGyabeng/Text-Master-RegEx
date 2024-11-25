@@ -2,8 +2,9 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
@@ -88,7 +89,7 @@
                                           </ImageView>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="importBtn" layoutX="238.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #626ae7;" text="Import" textFill="WHITE">
+                                    <Button fx:id="importBtn" layoutX="238.0" layoutY="26.0" mnemonicParsing="false" onAction="#readFromFile" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #626ae7;" text="Import" textFill="WHITE">
                                        <graphic>
                                           <ImageView fitHeight="15.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -129,7 +130,19 @@
                                                       <HBox prefHeight="19.0" prefWidth="111.0" />
                                                       <VBox prefHeight="48.0" prefWidth="150.0">
                                                          <children>
-                                                            <ComboBox prefHeight="28.0" prefWidth="132.0" promptText="Select" visibleRowCount="5" />
+                                                            <ChoiceBox fx:id="choice" prefWidth="150.0" />
+                                                            <Button fx:id="findBtn1" mnemonicParsing="false" onAction="#analyzeRegex" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #626ae7;" text="Analyze" textFill="WHITE">
+                                                               <font>
+                                                                  <Font size="13.0" />
+                                                               </font>
+                                                               <graphic>
+                                                                  <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@images/process.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
                                                          </children></VBox>
                                                       <Label text="The processed text will appear down." wrapText="true">
                                                          <font>
@@ -221,9 +234,9 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <TextArea fx:id="resultArea" prefHeight="233.0" prefWidth="506.0" promptText="This area will display the processed text with modifications applied." style="-fx-border-color: #626ae7; -fx-border-radius: 5px;">
+                              <TextArea fx:id="resultArea" prefHeight="233.0" prefWidth="506.0" promptText="This area will display the processed text with modifications applied." style="-fx-border-color: #626ae7; -fx-border-radius: 5px;" wrapText="true">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="22.0" />
                                  </font>
                               </TextArea>
                            </children>
@@ -237,9 +250,9 @@
                               <VBox prefHeight="182.0" prefWidth="168.0">
                                  <children>
                                     <HBox prefHeight="58.0" prefWidth="218.0" />
-                                    <VBox prefHeight="126.0" prefWidth="314.0">
+                                    <VBox prefHeight="126.0" prefWidth="299.0">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="314.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="297.0">
                                              <children>
                                                 <TextField fx:id="regexSearch" layoutX="10.0" layoutY="11.0" prefHeight="32.0" prefWidth="198.0" promptText="search regex">
                                                    <font>
@@ -247,7 +260,7 @@
                                                    </font>
                                                 </TextField>
                                                 <HBox prefHeight="28.0" prefWidth="4.0" />
-                                                <Button fx:id="patternBtn" mnemonicParsing="false" onAction="#regexOperation" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #626ae7;" text="Pattern" textFill="WHITE">
+                                                <Button fx:id="patternBtn" mnemonicParsing="false" onAction="#highlightMatches" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #626ae7;" text="Pattern" textFill="WHITE">
                                                    <font>
                                                       <Font size="13.0" />
                                                    </font>
@@ -259,11 +272,6 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </Button>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="314.0">
-                                             <children>
-                                                <HBox prefHeight="38.0" prefWidth="3.0" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -278,14 +286,14 @@
                                              <children>
                                                 <HBox alignment="CENTER" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #626ae7; -fx-border-radius: 10px;" styleClass="exportContainer" stylesheets="@style/style.css">
                                                    <children>
-                                                      <Button fx:id="pdfBtn" mnemonicParsing="false" prefHeight="20.0" prefWidth="37.0" style="-fx-background-color: white;" text="Pdf" textFill="#626ae7">
+                                                      <Button fx:id="pdfBtn" mnemonicParsing="false" onAction="#handleExportToPdf" prefHeight="20.0" prefWidth="37.0" style="-fx-background-color: white;" text="Pdf" textFill="#626ae7">
                                                          <font>
                                                             <Font name="System Bold" size="11.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="docsBtn" layoutX="27.0" layoutY="11.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="47.0" style="-fx-background-color: #626ae7;" text="Docs" textFill="WHITE">
+                                                      <Button fx:id="bookmarkBtn" layoutX="27.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleBookmark" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #626ae7;" text="Bookmark" textFill="WHITE">
                                                          <font>
-                                                            <Font name="System Bold" size="12.0" />
+                                                            <Font name="System Bold" size="10.0" />
                                                          </font>
                                                       </Button>
                                                    </children>
@@ -299,12 +307,15 @@
                                           </VBox>
                                           <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="345.0" prefWidth="224.0" style="-fx-padding: 10px;">
                                              <children>
-                                                <Label contentDisplay="CENTER" prefHeight="47.0" prefWidth="165.0" text="Quick Reference" textAlignment="CENTER">
+                                                <Label contentDisplay="CENTER" prefHeight="24.0" prefWidth="107.0" text="Bookmarks">
                                                    <font>
                                                       <Font name="Franklin Gothic Demi Italic" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <VBox prefHeight="328.0" prefWidth="189.0" style="-fx-border-color: #626ae7;" styleClass="quickReference-box" stylesheets="@style/style.css" />
+                                                <VBox prefHeight="328.0" prefWidth="189.0" style="-fx-border-color: #626ae7;" styleClass="quickReference-box" stylesheets="@style/style.css">
+                                                   <children>
+                                                      <ListView fx:id="bookmarkArea" prefHeight="304.0" prefWidth="191.0" />
+                                                   </children></VBox>
                                              </children>
                                           </VBox>
                                        </children>

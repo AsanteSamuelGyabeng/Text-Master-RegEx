@@ -14,4 +14,22 @@ public class ShowAlert {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    public static void showAlertError() {
+        ShowAlert.showAlert(
+             "Error",
+             "Please fill all the fields",
+             "No input given!!! Please enter the fields and continue! ",
+    Alert.AlertType.ERROR);
+}
+
+    public static void showAlertSuccess(String message) {
+        ShowAlert.showAlert(
+             "Success",
+             "Registration Successful",
+             message,
+             Alert.AlertType.INFORMATION  );
+        }
+
+
 }
