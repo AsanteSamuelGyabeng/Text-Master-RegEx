@@ -26,7 +26,7 @@ public class ShowAlert {
     public static void showAlertSuccess(String message) {
         ShowAlert.showAlert(
              "Success",
-             "Registration Successful",
+             "Export Successful",
              message,
              Alert.AlertType.INFORMATION  );
         }
