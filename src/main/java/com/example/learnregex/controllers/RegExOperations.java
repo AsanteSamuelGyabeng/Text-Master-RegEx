@@ -3,12 +3,14 @@ package com.example.learnregex.controllers;
 import com.example.learnregex.dataManagement.Bookmark;
 import com.example.learnregex.service.FileManager;
 
+import com.example.learnregex.service.NotesDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +25,7 @@ public class RegExOperations extends Master {
     private TextField textField, patternField, replaceTextfield, findInput, replaceInput, regexSearch;
 
     @FXML
-    private Button processBtn, replaceButton, findBtn, importBtn, pdfBtn, docsBtn, helpBtn, patternBtn;
+    private Button processBtn, replaceButton, findBtn, importBtn, pdfBtn, docsBtn, helpBtn, patternBtn,applyChanges,refreshBtn;
 
     @FXML
     private TextArea resultArea, userInput;
@@ -80,7 +82,7 @@ public class RegExOperations extends Master {
 
 
     /**
-     * @highlightMatches
+     * @highlightMatches - calls the service class FileManager to save the contents of the result area to a file
      */
     @FXML
     private void highlightMatches() {
@@ -91,6 +93,7 @@ public class RegExOperations extends Master {
             ShowAlert.showAlertError();
         }
     }
+
 
     /**
      * @countMatches - count the number of matches in the given text
@@ -104,6 +107,18 @@ public class RegExOperations extends Master {
         }
     }
 
+    /**
+     * @handleApplyChanges - calls the service class FileManager to save the contents of the result area to a file
+     */
+    @FXML
+    public void handleApplyChanges() {
+        if (!resultArea.getText().isEmpty()) {
+            userInput.setText(resultArea.getText());
+            resultArea.clear();
+        } else {
+            ShowAlert.showAlertError();
+        }
+    }
 
     /**
      * @param event
@@ -204,18 +219,41 @@ public class RegExOperations extends Master {
      * @param selectedKey
      */
     private void editBookmark(String selectedKey) {
-        TextInputDialog editDialog = new TextInputDialog(bookmarks.get(selectedKey));
+        Dialog<String> editDialog = new Dialog<>();
         editDialog.setTitle("Edit Bookmark");
         editDialog.setHeaderText("Update Bookmark Value");
-        editDialog.setContentText("Enter the new value:");
+
+        TextArea textArea = new TextArea(bookmarks.get(selectedKey));
+        textArea.setWrapText(true);
+
+        VBox content = new VBox();
+        content.setSpacing(10);
+        content.getChildren().add(new Label("Enter the new value:"));
+        content.getChildren().add(textArea);
+        editDialog.getDialogPane().setContent(content);
+
+        ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        editDialog.getDialogPane().getButtonTypes().addAll(okButtonType, cancelButtonType);
+        editDialog.setResultConverter(buttonType -> {
+            if (buttonType == okButtonType) {
+                return textArea.getText();
+            }
+            return null;
+        });
         String newValue = editDialog.showAndWait().orElse(null);
         if (newValue == null || newValue.isEmpty()) {
-            System.out.println("No value entered for editing.");
+           log.error("No value entered for editing.");
             return;
         }
         bookmarks.put(selectedKey, newValue);
-        System.out.printf("Bookmark '%s' updated to: %s%n", selectedKey, newValue);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Bookmark Updated");
+        alert.setHeaderText(null);
+        alert.setContentText(String.format("Bookmark '%s' updated to:\n%s", selectedKey, newValue));
+        alert.showAndWait();
     }
+
 
     /**
      * @deleteBookmark method delete the bookmark
@@ -236,4 +274,22 @@ public class RegExOperations extends Master {
         });
 
     }
+
+    /**
+     * @handleRefresh method clear all the fields
+     */
+    @FXML
+    private void handleRefresh(){
+        userInput.clear();
+        resultArea.clear();
+        findInput.clear();
+        replaceInput.clear();
+    }
+
+
+    @FXML
+    private void quickReference(){
+        NotesDialog.displayNotesDialog();
+    }
+
 }

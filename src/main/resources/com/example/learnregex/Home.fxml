@@ -38,7 +38,7 @@
                      </children>
                   </HBox>
                   <HBox prefHeight="35.0" prefWidth="346.0" />
-                  <Button fx:id="helpBtn" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-background-color: #626ae7;" text="Help" textFill="WHITE">
+                  <Button fx:id="helpBtn" mnemonicParsing="false" onAction="#quickReference" prefHeight="24.0" prefWidth="90.0" style="-fx-background-color: #626ae7;" text="Help" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -106,6 +106,7 @@
                               <VBox prefHeight="1.0" prefWidth="506.0" />
                               <VBox prefHeight="259.0" prefWidth="531.0" style="-fx-padding: 10px;">
                                  <children>
+                                    <HBox prefHeight="24.0" prefWidth="137.0" />
                                     <VBox prefHeight="16.0" prefWidth="350.0" />
                                     <TextArea fx:id="userInput" prefHeight="175.0" prefWidth="485.0" promptText="Input Text" wrapText="true">
                                        <effect>
@@ -130,8 +131,8 @@
                                                       <HBox prefHeight="19.0" prefWidth="111.0" />
                                                       <VBox prefHeight="48.0" prefWidth="150.0">
                                                          <children>
-                                                            <ChoiceBox fx:id="choice" prefWidth="150.0" />
-                                                            <Button fx:id="findBtn1" mnemonicParsing="false" onAction="#analyzeRegex" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #626ae7;" text="Analyze" textFill="WHITE">
+                                                            <ChoiceBox fx:id="choice" prefHeight="62.0" prefWidth="150.0" />
+                                                            <Button fx:id="findBtn1" mnemonicParsing="false" onAction="#analyzeRegex" prefHeight="21.0" prefWidth="94.0" style="-fx-background-color: #626ae7;" text="Analyze" textFill="WHITE">
                                                                <font>
                                                                   <Font size="13.0" />
                                                                </font>
@@ -188,7 +189,7 @@
                                                    </graphic>
                                                 </Button>
                                                 <VBox alignment="CENTER_RIGHT" prefHeight="7.0" prefWidth="110.0" />
-                                                <Button fx:id="replaceButton" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#replaceOperation" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #626ae7;" text="Replace" textFill="WHITE">
+                                                <Button fx:id="replaceButton" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#replaceOperation" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #563A9C;" text="Replace" textFill="WHITE">
                                                    <font>
                                                       <Font size="13.0" />
                                                    </font>
@@ -227,16 +228,11 @@
                                        </children>
                                     </HBox>
                                     <HBox alignment="BOTTOM_RIGHT" prefHeight="22.0" prefWidth="83.0" />
-                                    <Label fx:id="wordCountLabel" prefHeight="22.0" prefWidth="150.0" text="Word Count: 812">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
                                  </children>
                               </HBox>
-                              <TextArea fx:id="resultArea" prefHeight="233.0" prefWidth="506.0" promptText="This area will display the processed text with modifications applied." style="-fx-border-color: #626ae7; -fx-border-radius: 5px;" wrapText="true">
+                              <TextArea fx:id="resultArea" editable="false" prefHeight="233.0" prefWidth="506.0" promptText="This area will display the processed text with modifications applied." style="-fx-border-color: #626ae7; -fx-border-radius: 5px;" wrapText="true">
                                  <font>
-                                    <Font size="22.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextArea>
                            </children>
@@ -284,6 +280,29 @@
                                        <children>
                                           <VBox alignment="BOTTOM_CENTER" prefHeight="346.0" prefWidth="118.0" style="-fx-padding: 0px 0px 10px 0px;">
                                              <children>
+                                                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Button fx:id="applyChanges" mnemonicParsing="false" onAction="#handleApplyChanges" prefHeight="23.0" prefWidth="29.0" style="-fx-background-color: #219B9D;">
+                                                         <graphic>
+                                                            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@images/arrow-small-up.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Button>
+                                                      <VBox prefHeight="7.0" prefWidth="104.0" />
+                                                      <Button fx:id="refreshBtn" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="30.0" prefWidth="27.0" style="-fx-background-color: #FF8000;">
+                                                         <graphic>
+                                                            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@images/refresh.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
                                                 <HBox alignment="CENTER" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #626ae7; -fx-border-radius: 10px;" styleClass="exportContainer" stylesheets="@style/style.css">
                                                    <children>
                                                       <Button fx:id="pdfBtn" mnemonicParsing="false" onAction="#handleExportToPdf" prefHeight="20.0" prefWidth="37.0" style="-fx-background-color: white;" text="Pdf" textFill="#626ae7">
