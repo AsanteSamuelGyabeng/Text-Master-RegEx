@@ -2,22 +2,16 @@ package com.example.learnregex.controllers;
 
 import com.example.learnregex.dataManagement.Bookmark;
 import com.example.learnregex.service.FileManager;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -125,20 +119,7 @@ public class RegExOperations extends Master {
         }
     }
 
-    /**
-     * @param event
-     */
-    @FXML
-    public void regexOperation(ActionEvent event) {
-        if (!userInput.getText().isEmpty() && !regexSearch.getText().isEmpty()) {
-            String result = Master.finder(userInput.getText(), regexSearch.getText());
-            resultArea.setText(result);
-        } else {
-            ShowAlert.showAlertError();
-        }
 
-
-    }
 
     /**
      * @param event
@@ -154,14 +135,19 @@ public class RegExOperations extends Master {
         }
     }
 
+    /**
+     * @handleExportToPdf - calls the FileManager class to export the result to a pdf file
+     */
     @FXML
     public void handleExportToPdf() {
-        // Pass content and stage to the utility class
         String content = resultArea.getText();
         Stage stage = (Stage) resultArea.getScene().getWindow();
         FileManager.handleExportToPdf(content, stage);
     }
 
+    /**
+     * @handleBookmark - calls the FileManager class to export the result to a bookmark file
+     */
     @FXML
     private void handleBookmark() {
         TextInputDialog dialog = new TextInputDialog();
@@ -190,12 +176,15 @@ public class RegExOperations extends Master {
         });
     }
 
+    /**
+     * @handleBookmarkSelection method handle the selected bookmark from the listview
+     * @param selectedKey
+     */
     private void handleBookmarkSelection(String selectedKey) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Bookmark Options");
         alert.setHeaderText("Manage Bookmark");
         alert.setContentText("Choose an option for the selected bookmark:");
-
         ButtonType editButton = new ButtonType("Edit");
         ButtonType deleteButton = new ButtonType("Delete");
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -210,6 +199,10 @@ public class RegExOperations extends Master {
         });
     }
 
+    /**
+     * @editBookmark method edit the bookmark
+     * @param selectedKey
+     */
     private void editBookmark(String selectedKey) {
         TextInputDialog editDialog = new TextInputDialog(bookmarks.get(selectedKey));
         editDialog.setTitle("Edit Bookmark");
@@ -224,6 +217,10 @@ public class RegExOperations extends Master {
         System.out.printf("Bookmark '%s' updated to: %s%n", selectedKey, newValue);
     }
 
+    /**
+     * @deleteBookmark method delete the bookmark
+     * @param selectedKey
+     */
     private void deleteBookmark(String selectedKey) {
         Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION);
         confirmDelete.setTitle("Confirm Deletion");
