@@ -152,12 +152,12 @@ public class RegExOperations extends Master {
     private void handleBookmark() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Dialog");
-        dialog.setHeaderText("Enter Your Input");
-        dialog.setContentText("Please enter a value:");
+        dialog.setHeaderText("Provide a title");
+        dialog.setContentText("Please enter a Title here:");
 
         String input = dialog.showAndWait().orElse(null);
         if (input == null || input.isEmpty()) {
-            System.out.println("No input provided.");
+            System.out.println("No title provided.");
             return;
         }
 
