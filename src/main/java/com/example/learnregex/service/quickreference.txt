@@ -1,0 +1,50 @@
+1. . (Dot) - Matches any single character except newline.
+2. ^ (Caret) - Anchors the match to the start of the string.
+3. $ (Dollar) - Anchors the match to the end of the string.
+4. [] (Square Brackets) - Defines a character class. Matches any character inside the brackets.
+5. [^] (Negated Square Brackets) - Matches any character not inside the brackets.
+6. - (Dash inside square brackets) - Specifies a range of characters, e.g., [a-z], [0-9].
+7. () (Parentheses) - Groups patterns together to apply quantifiers or for backreferencing.
+8. | (Pipe) - Acts as an OR operator between alternatives.
+9. * (Asterisk) - Matches 0 or more occurrences of the preceding element.
+10. + (Plus) - Matches 1 or more occurrences of the preceding element.
+11. ? (Question Mark) - Matches 0 or 1 occurrence of the preceding element.
+12. {n} - Matches exactly n occurrences of the preceding element.
+13. {n,} - Matches n or more occurrences of the preceding element.
+14. {n,m} - Matches between n and m occurrences of the preceding element.
+15. \ (Backslash) - Escapes a special character to treat it literally.
+16. \b - Matches a word boundary.
+17. \B - Matches a non-word boundary.
+18. \d - Matches any digit (0-9).
+19. \D - Matches any non-digit.
+20. \w - Matches any word character (alphanumeric + underscore).
+21. \W - Matches any non-word character.
+22. \s - Matches any whitespace character (space, tab, newline).
+23. \S - Matches any non-whitespace character.
+24. \n - Matches a newline character.
+25. \r - Matches a carriage return character.
+26. \t - Matches a tab character.
+27. \A - Matches the start of the string (similar to ^ but independent of line breaks).
+28. \Z - Matches the end of the string (similar to $ but independent of line breaks).
+29. (?=...) - Positive lookahead. Matches a group only if it is followed by a certain pattern.
+30. (?!...) - Negative lookahead. Matches a group only if it is not followed by a certain pattern.
+31. (?<=...) - Positive lookbehind. Matches a group only if it is preceded by a certain pattern.
+32. (?<!...) - Negative lookbehind. Matches a group only if it is not preceded by a certain pattern.
+33. (?<=...) - Positive lookbehind (ensures that a certain pattern is before the match).
+34. (?<!...) - Negative lookbehind (ensures that a certain pattern is not before the match).
+35. (?:...) - Non-capturing group. Groups a pattern but does not capture it for backreference.
+36. \Q...\E - Escapes a literal string between \Q and \E, so that special characters are treated as normal characters.
+37. \p{Property} - Matches characters with a specific Unicode property, like \p{Lu} for uppercase letters.
+38. \P{Property} - Matches characters without a specific Unicode property.
+39. \xhh - Matches the character with hexadecimal value hh.
+40. \uhhhh - Matches the Unicode character specified by four hexadecimal digits.
+41. \a - Matches a bell character (ASCII 7).
+42. \b - Matches a backspace character.
+43. \f - Matches a form feed character.
+44. \v - Matches a vertical tab character.
+45. \z - Matches the end of the string, considering line breaks.
+46. \Z - Matches the end of the string, excluding line breaks.
+47. (?!) - Atomic group. The regular expression engine will match the pattern only once and will not backtrack into it.
+48. \g<name> - Backreference to a named capture group.
+49. \k<name> - Backreference to a named capture group (alternative).
+50. \G - Matches the point where the previous match ended (useful for matching from the same place in repeated matches).

@@ -45,9 +45,9 @@ private static final Logger log = LoggerFactory.getLogger(Master.class);
 
         while (mt.find()) {
             highlightedText.append(userInput, lastEnd, mt.start());
-            highlightedText.append("##")
+            highlightedText.append("**")
                     .append(mt.group())
-                    .append("##");
+                    .append("**");
             lastEnd = mt.end();
         }
 
