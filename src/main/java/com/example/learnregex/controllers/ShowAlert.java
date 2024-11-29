@@ -32,4 +32,14 @@ public class ShowAlert {
         }
 
 
+    public static void showAlertUpdate(String selectedKey) {
+        ShowAlert.showAlert(
+        "Success",
+    "Update Successful",
+    "Updated " + selectedKey,
+           Alert.AlertType.INFORMATION
+                );
+    }
+
+
 }

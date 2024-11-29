@@ -49,6 +49,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
@@ -100,6 +103,9 @@
                                        <font>
                                           <Font size="15.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                  </children>
                               </HBox>
@@ -143,6 +149,9 @@
                                                                      </image>
                                                                   </ImageView>
                                                                </graphic>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
                                                             </Button>
                                                          </children></VBox>
                                                       <Label text="The processed text will appear down." wrapText="true">
@@ -187,6 +196,9 @@
                                                          </image>
                                                       </ImageView>
                                                    </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                                 <VBox alignment="CENTER_RIGHT" prefHeight="7.0" prefWidth="110.0" />
                                                 <Button fx:id="replaceButton" layoutX="10.0" layoutY="43.0" mnemonicParsing="false" onAction="#replaceOperation" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #563A9C;" text="Replace" textFill="WHITE">
@@ -200,6 +212,9 @@
                                                          </image>
                                                       </ImageView>
                                                    </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </VBox>
@@ -267,6 +282,9 @@
                                                          </image>
                                                       </ImageView>
                                                    </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Button>
                                              </children>
                                           </HBox>
@@ -290,6 +308,9 @@
                                                                </image>
                                                             </ImageView>
                                                          </graphic>
+                                                         <cursor>
+                                                            <Cursor fx:constant="MOVE" />
+                                                         </cursor>
                                                       </Button>
                                                       <VBox prefHeight="7.0" prefWidth="104.0" />
                                                       <Button fx:id="refreshBtn" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="30.0" prefWidth="27.0" style="-fx-background-color: #FF8000;">
@@ -300,6 +321,9 @@
                                                                </image>
                                                             </ImageView>
                                                          </graphic>
+                                                         <cursor>
+                                                            <Cursor fx:constant="MOVE" />
+                                                         </cursor>
                                                       </Button>
                                                    </children>
                                                 </VBox>
@@ -309,11 +333,17 @@
                                                          <font>
                                                             <Font name="System Bold" size="11.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Button>
                                                       <Button fx:id="bookmarkBtn" layoutX="27.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleBookmark" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #626ae7;" text="Bookmark" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="10.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Button>
                                                    </children>
                                                 </HBox>

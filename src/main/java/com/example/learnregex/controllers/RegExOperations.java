@@ -247,11 +247,7 @@ public class RegExOperations extends Master {
             return;
         }
         bookmarks.put(selectedKey, newValue);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Bookmark Updated");
-        alert.setHeaderText(null);
-        alert.setContentText(String.format("Bookmark '%s' updated to:\n%s", selectedKey, newValue));
-        alert.showAndWait();
+        ShowAlert.showAlertUpdate(selectedKey);
     }
 
 
